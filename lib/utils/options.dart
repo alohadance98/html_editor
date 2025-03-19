@@ -19,9 +19,6 @@ class HtmlEditorOptions {
     this.hint,
     this.initialText,
     this.inputType = HtmlInputType.text,
-    this.mobileContextMenu,
-    this.mobileLongPressDuration,
-    this.mobileInitialScripts,
     this.webInitialScripts,
     this.shouldEnsureVisible = false,
     this.spellCheck = false,
@@ -95,17 +92,6 @@ class HtmlEditorOptions {
   ///
   /// The default value is [HtmlInputType.text] (the standard virtual keyboard)
   final HtmlInputType inputType;
-
-  /// Customize the context menu for selected text on mobile
-  final ContextMenu? mobileContextMenu;
-
-  /// Set the duration until a long-press is recognized.
-  ///
-  /// The default value is 500ms.
-  final Duration? mobileLongPressDuration;
-
-  /// Initial JS to inject into the editor.
-  final UnmodifiableListView<UserScript>? mobileInitialScripts;
 
   /// Initial JS to add to the editor. These can be called at any time using
   /// [controller.evaluateJavascriptWeb]

@@ -7,7 +7,7 @@ import 'package:html_editor/html_editor.dart';
 import 'package:html_editor/utils/utils.dart';
 // ignore: avoid_web_libraries_in_flutter
 import 'package:web/web.dart' as web;
-import 'package:html_editor/utils/shims/dart_ui.dart' as ui;
+import 'dart:ui_web' as ui;
 
 /// The HTML Editor widget itself, for web (uses IFrameElement)
 class HtmlEditorWidget extends StatefulWidget {
@@ -528,8 +528,11 @@ class _HtmlEditorWidgetWebState extends State<HtmlEditorWidget> {
         web.window.postMessage(jsonStr.toJS, '*'.toJS);
         web.window.postMessage(jsonStr2.toJS, '*'.toJS);
       });
-    ui.platformViewRegistry
-        .registerViewFactory(createdViewId, (int viewId) => iframe);
+    ui.platformViewRegistry.registerViewFactory(
+        createdViewId,
+        (int viewId) => iframe
+          ..style.width = '100%'
+          ..style.height = '100%');
     setState(mounted, this.setState, () {
       summernoteInit = Future.value(true);
     });

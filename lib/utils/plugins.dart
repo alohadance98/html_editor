@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 /// Abstract class that all the plguin classes extend
 abstract class Plugins {
   const Plugins();
@@ -13,14 +11,11 @@ abstract class Plugins {
 
 /// Summernote @ Mention plugin - adds a dropdown to select the person to mention whenever
 /// the '@' character is typed into the editor. The list of people to mention is
-/// drawn from the [getSuggestionsMobile] (on mobile) or [mentionsWeb] (on Web)
+/// drawn from the [mentionsWeb] (on Web)
 /// parameter. You can detect who was mentioned using the [onSelect] callback.
 ///
 /// README available [here](https://github.com/team-loxo/summernote-at-mention)
 class SummernoteAtMention extends Plugins {
-  /// Function used to get the displayed suggestions on mobile
-  final List<String> Function(String)? getSuggestionsMobile;
-
   /// List of mentions to display on Web. The default behavior is to only return
   /// the mentions containing the string entered by the user in the editor
   final List<String>? mentionsWeb;
@@ -28,9 +23,8 @@ class SummernoteAtMention extends Plugins {
   /// Callback to run code when a mention is selected
   final void Function(String)? onSelect;
 
-  const SummernoteAtMention(
-      {this.getSuggestionsMobile, this.mentionsWeb, this.onSelect})
-      : assert(kIsWeb ? mentionsWeb != null : getSuggestionsMobile != null);
+  const SummernoteAtMention({this.mentionsWeb, this.onSelect})
+      : assert(mentionsWeb != null);
 
   @override
   String getHeadString() {

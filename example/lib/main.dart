@@ -150,9 +150,6 @@ class _HtmlEditorExampleState extends State<HtmlEditorExample> {
                   print('mouse downed');
                 }, onMouseUp: () {
                   print('mouse released');
-                }, onNavigationRequestMobile: (String url) {
-                  print(url);
-                  return NavigationActionPolicy.ALLOW;
                 }, onPaste: () {
                   print('pasted into editor');
                 }, onScroll: () {
@@ -160,12 +157,6 @@ class _HtmlEditorExampleState extends State<HtmlEditorExample> {
                 }),
                 plugins: [
                   SummernoteAtMention(
-                      getSuggestionsMobile: (String value) {
-                        var mentions = <String>['test1', 'test2', 'test3'];
-                        return mentions
-                            .where((element) => element.contains(value))
-                            .toList();
-                      },
                       mentionsWeb: ['test1', 'test2', 'test3'],
                       onSelect: (String value) {
                         print(value);
